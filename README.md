@@ -1,5 +1,7 @@
 # Lab M5.01 - First GitHub Actions Pipeline
- 
+
+![Terraform CI](https://github.com/Jcaldana97/ce-lab-first-github-actions-pipeline/actions/workflows/ci.yml/badge.svg)
+
 ## What This Repository Does
 
 Demonstrates a GitHub Actions CI pipeline for Terraform that automatically
