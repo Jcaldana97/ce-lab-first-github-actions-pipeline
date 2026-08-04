@@ -37,20 +37,17 @@ jobs:
  
       - name: Post Plan to PR
         uses: actions/github-script@v7
+        env:
+          PLAN_OUTPUT: ${{ steps.plan.outputs.stdout }}
         with:
           script: |
             const output = `#### Terraform Plan
-            ```
-            ${{ steps.plan.outputs.stdout }}
-            ```
+
+            \`\`\`
+            ${process.env.PLAN_OUTPUT}
+            \`\`\`
+
             *Triggered by @${{ github.actor }} in commit ${{ github.sha }}*`;
- 
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: output
-            });
  
       - name: Fail on Plan Error
         if: steps.plan.outcome == 'failure'
